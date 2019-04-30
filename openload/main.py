@@ -21,7 +21,7 @@ def openload(link):
   browser.get(link)
   page_source_len = len(link)
 
-  #this loop is because my isp sometimes blocks the page
+  #this loop is because my isp sometimes blocks the domain
   #remove this if yours doesn't
   while page_source_len < 10000:
     browser.get(link)
@@ -32,7 +32,14 @@ def openload(link):
   browser.find_element_by_css_selector('.dlbutton').click()
   sleep(0.3)
   ok_link = browser.find_element_by_css_selector('#realdl a').get_attribute('href')
-  ok = head(link, allow_redirects=False)
-  return ok.headers['Location']
-  sleep(2)
+  print(ok_link)
+  okdict = head(ok_link, allow_redirects=False).headers
+
+  #this loop is because my isp sometimes blocks the domain
+  #remove this if yours doesn't
+  while 'Location' not in okdict:
+    ok = head(ok_link, allow_redirects=False).headers
+
+  return okdict['Location']
+
 
