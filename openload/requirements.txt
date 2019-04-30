@@ -1,0 +1,6 @@
+hahaha this is not the typical requirements.txt
+You need the following packages:
+requests
+selenium
+
+and chrome driver that is compatible with your chrome browser verison
