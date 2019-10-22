@@ -6,3 +6,5 @@ I got news for you, all code in this repo is for education purposes only. I am n
 If you have any problems, send me a message, I will happily take down the code you're conflicted with(make a "remove" commit).
 
 Thank you for reading this.
+
+And for your information: Using this repo you can learn more about web scraping and how to grab important stuff from the server
