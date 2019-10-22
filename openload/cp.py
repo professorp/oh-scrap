@@ -13,14 +13,13 @@ chrome_options.add_argument("--window-size=1024x768")
 #yes i use adblock
 chrome_options.add_extension('/home/lunu/Apps/ublock/ublock.crx')
 chrome_driver = '/home/lunu/Apps/chromedriver/chromedriver'
-
-with webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver) as browser:
-  link = 'http://streamplay.to/62bccbllubbh'
-  browser.get(link)
-  page_source_len = len(browser.page_source)
-  #this loop is because my isp sometimes blocks the domain
-  #remove this if yours doesn't
-  while page_source_len < 500:
+def grab(link):
+  with webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver) as browser:
     browser.get(link)
     page_source_len = len(browser.page_source)
-  x= input()
+    #this loop is because my isp sometimes blocks the domain
+    #remove this if yours doesn't
+    while page_source_len < 500:
+      browser.get(link)
+      page_source_len = len(browser.page_source)
+    x= input()
